@@ -1,22 +1,14 @@
-# ⚡ WorkTracker-NPP
+# WorkTracker - Notepad++ Daily Work Tracker
 
-> A lightning-fast, keyboard-driven work tracker for Notepad++ with beautiful syntax highlighting
+A speed-optimized syntax highlighting system for tracking daily tasks, notes, and progress in Notepad++. Designed for developers and professionals who want a fast, keyboard-friendly way to manage their daily work without leaving their text editor.
 
-WorkTracker-NPP transforms Notepad++ into a powerful task tracking system designed for developers and professionals who live in their text editor. Track daily work, manage priorities, and monitor progress using simple, single-character markers—all with gorgeous syntax highlighting.
+## Features
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Notepad++](https://img.shields.io/badge/Notepad%2B%2B-7.0%2B-brightgreen.svg)
-
-## ✨ Features
-
--   **⚡ Speed-optimized syntax** - Single character markers (`+`, `~`, `x`, `!!!`) for rapid note-taking
--   **🎨 5 beautiful themes** - One Dark, Nord, Dracula, Gruvbox, Tokyo Night
--   **🏷️ Logger-style keywords** - Familiar `TODO`, `FIXME`, `NOTE` syntax from programming
--   **📊 Visual priority system** - Color-coded tasks by urgency and status at a glance
--   **⌨️ Keyboard-first workflow** - Zero mouse, maximum productivity
--   **📝 Plain text forever** - Your notes remain readable even without Notepad++
--   **🚀 Zero dependencies** - Just Notepad++ and these XML files
+-   **Lightning-fast typing** - Single character markers for quick note-taking
+-   **Visual priority system** - Color-coded tasks by urgency and status
+-   **Logger-style keywords** - Familiar TODO, FIXME, NOTE syntax
+-   **5 beautiful themes** - One Dark, Nord, Dracula, Gruvbox, Tokyo Night
+-   **Zero dependencies** - Just Notepad++ and these XML files
 
 ---
 
@@ -59,34 +51,43 @@ The syntax highlighting will activate automatically!
 ```
 # Main Task Name !!!
   - Subtask 1 +
-  - Subtask 2 ~
+  - Subtask 2 >
   - Subtask 3 x
-  >> Update: Progress notes here
-  ** Personal reminder or note
+  TODO Add password reset flow
+  **Remember to check with **@alice****
   ~Cancelled or deprecated item~
+
+```
+
+code block here
+
+```
+
 ```
 
 ### Priority Markers (for task headers)
 
 Use these at the **end** of your `#` task headers:
 
-| Marker | Meaning         | Color      | Usage                        |
-| ------ | --------------- | ---------- | ---------------------------- |
-| `!!!`  | Critical/Urgent | Red (Bold) | `# Deploy to production !!!` |
-| `!!`   | High Priority   | Orange     | `# Code review !!`           |
-| `!`    | Medium Priority | Yellow     | `# Update docs !`            |
-| (none) | Low/Normal      | Default    | `# Refactor utils`           |
+| Marker | Meaning         | Color                         | Usage                        |
+| ------ | --------------- | ----------------------------- | ---------------------------- |
+| `!!!`  | Critical/Urgent | Red text + Dark red bg (Bold) | `# Deploy to production !!!` |
+| `!!`   | High Priority   | Orange text + Dark orange bg  | `# Code review !!`           |
+| `!`    | Medium Priority | Yellow                        | `# Update docs !`            |
+| (none) | Low/Normal      | Default                       | `# Refactor utils`           |
+
+**Note:** `#` headers get a full-line cyan background for easy scanning!
 
 ### Status Markers (for subtasks)
 
 Use these at the **end** of your `-` subtasks:
 
-| Marker | Meaning        | Color        | Usage                   |
-| ------ | -------------- | ------------ | ----------------------- |
-| `+`    | Done/Completed | Green (Bold) | `- Write tests +`       |
-| `~`    | In Progress    | Blue         | `- Implement feature ~` |
-| `x`    | Blocked/Stuck  | Red          | `- Deploy script x`     |
-| (none) | Not Started    | Default      | `- Review PR`           |
+| Marker | Meaning        | Color   | Usage                   |
+| ------ | -------------- | ------- | ----------------------- |
+| `+`    | Done/Completed | Green   | `- Write tests +`       |
+| `>`    | In Progress    | Cyan    | `- Implement feature >` |
+| `x`    | Blocked/Stuck  | Yellow  | `- Deploy script x`     |
+| (none) | Not Started    | Default | `- Review PR`           |
 
 ### Logger Keywords (at start of line)
 
@@ -128,14 +129,14 @@ These work like programming log levels - type them at the **beginning** of a lin
 
 ### Special Markers
 
-| Marker     | Purpose                 | Example                       |
-| ---------- | ----------------------- | ----------------------------- |
-| `#`        | Task header             | `# Implement feature`         |
-| `-`        | Subtask                 | `- Write unit tests`          |
-| `>>`       | Updates/notes           | `>> Made progress on API`     |
-| `**text**` | Personal reminder       | `** Check with @john`         |
-| `@name`    | Mention person          | `Ask @alice about deployment` |
-| `~text~`   | Strikethrough/cancelled | `~Old approach~`              |
+| Marker           | Purpose                                 | Example                              |
+| ---------------- | --------------------------------------- | ------------------------------------ |
+| `#`              | Task header (full-line cyan background) | `# Implement feature`                |
+| `-`              | Subtask                                 | `- Write unit tests`                 |
+| `**text**`       | Personal reminder/emphasis              | `** Check with **@john** **`         |
+| `@name`          | Mention person (use with \*\*)          | `**@alice**` for highlighted mention |
+| `~text~`         | Strikethrough/cancelled                 | `~Old approach~`                     |
+| ` ``` text ``` ` | Code block                              | ` ``` function() {} ``` `            |
 
 ---
 
@@ -175,15 +176,21 @@ These work like programming log levels - type them at the **beginning** of a lin
 
 # Critical Bugs !!!
   - Login timeout issue +
-  - Payment processing error ~
+  - Payment processing error >
   FIXME Memory leak in dashboard
-  >> Found the issue in session handler
+
+```
+
+// Temporary fix - needs refactor
+clearInterval(timer);
+
+```
 
 # Minor Bugs !
-  - UI alignment on mobile
-  - Tooltip positioning
-  BUG Export CSV button not working
-  ~Duplicate entry validation~ (Won't fix)
+- UI alignment on mobile
+- Tooltip positioning
+BUG Export CSV button not working
+~Duplicate entry validation~ (Won't fix)
 ```
 
 ### Meeting Notes
@@ -193,8 +200,9 @@ These work like programming log levels - type them at the **beginning** of a lin
 
 # Alice
   - Completed user profile feature +
-  - Working on notifications ~
+  - Working on notifications >
   BLOCKED Waiting for API key from backend
+  **Follow up with **@bob** on API access**
 
 # Bob
   - Code review done +
@@ -202,10 +210,10 @@ These work like programming log levels - type them at the **beginning** of a lin
   TODO Need to discuss architecture with team
 
 # Charlie
-  - Database optimization ~
+  - Database optimization >
   - Performance testing x
   WARN Server resources running low
-  ** Follow up on cloud billing
+  **Follow up on cloud billing**
 ```
 
 ### Project Planning
@@ -215,15 +223,16 @@ These work like programming log levels - type them at the **beginning** of a lin
 
 # Mobile App Launch !!!
   - Design mockups +
-  - Backend API ~
+  - Backend API >
   - iOS development
   - Android development
   DEADLINE March 15, 2025
   REVIEW Weekly check-ins with product team
+  **Coordinate with **@sarah** on design assets**
 
 # Website Redesign !!
   - User research +
-  - Wireframes ~
+  - Wireframes >
   - Component library
   IDEA Consider dark mode support
   NOTE Targeting mid-February launch
@@ -252,7 +261,7 @@ These work like programming log levels - type them at the **beginning** of a lin
 
     ```
     - Implement feature +
-    - Write tests ~
+    - Write tests >
     - Deploy
     ```
 
@@ -275,7 +284,23 @@ These work like programming log levels - type them at the **beginning** of a lin
     NOTE API rate limit is 100/hour
     ```
 
-4. **Group related tasks**: Use `#` headers to organize by project/category
+4. **Use code blocks for snippets**: Wrap code in triple backticks
+
+    ```
+    ` `` `
+    function example() {
+      return true;
+    }
+    ` `` `
+    ```
+
+5. **Highlight important mentions**: Use `**@name**` to make mentions stand out
+
+    ```
+    **Check deployment with **@alice** before 3pm**
+    ```
+
+6. **Group related tasks**: Use `#` headers to organize by project/category
 
     ```
     # Frontend Work
@@ -444,14 +469,17 @@ This system is designed around these principles:
 -   ✅ Faster typing (no mouse, no UI)
 -   ✅ Works offline always
 -   ✅ Plain text = portable forever
+-   ✅ Code blocks for technical notes
 -   ❌ No reminders or mobile sync
 
 ### vs Markdown TODO lists
 
 -   ✅ Prettier syntax highlighting
--   ✅ Faster status markers
--   ✅ Visual priority system
--   ✅ Logger keywords
+-   ✅ Faster status markers (`>` vs `- [ ]`)
+-   ✅ Visual priority system with backgrounds
+-   ✅ Logger keywords (TODO, FIXME, etc.)
+-   ✅ Full-line header highlighting
+-   ✅ Code block support
 -   ➖ Still readable as plain text
 
 ### vs Project management tools (Jira, Asana)
@@ -459,6 +487,7 @@ This system is designed around these principles:
 -   ✅ Instant, no loading
 -   ✅ Personal, private notes
 -   ✅ No context switching
+-   ✅ Perfect for technical documentation
 -   ❌ Not for team collaboration
 
 ---
